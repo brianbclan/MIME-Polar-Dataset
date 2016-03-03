@@ -12,6 +12,8 @@ _This is a project of CSCI 599 at USC._
 * **partitionFiles.py**: used to partition the categorized data into 25% and 75% portions as training and test sets
 * **findCrossCorrelation.py**: used to generate the cross correlation matrix for each file type
 * **findInputCorrelation.py**: used to generate the correlation matrix of a single input file for each file type
+* **stringConverter.py**: used to generate json file for overall MIME type D3 visualization
+* **bfa.java**: used to calculate byte frquency for each file type
 
 ## FHT
 * **FHT/index.html**: main webpage to visualize result of FHT in matrix chart
@@ -23,3 +25,5 @@ _This is a project of CSCI 599 at USC._
 * **BFC/randomMatrixGenerator.py**: test file that generates sample json file for correlation matrix
 * **BFC/BFC_json_cross_correlation**: cross correlation json data
 * **BFC/BFC_json_single_input**: single file correaltion json data
+ 
+## Simple Pie Chart
