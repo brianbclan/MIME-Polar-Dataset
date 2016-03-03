@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FHT Matrix</title>    
+    <meta charset="utf-8"/>
+    <script type="text/javascript" src="http://d3js.org/d3.v3.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<!--
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>    
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+-->
+    <link rel="stylesheet" href="style.css"/>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Visualization for FHT </h2>
+<!--
+      <p>Choose a type from the following fifteen to visualize correlation matrix.</p>
+-->
+      <div class="inputsource">
+        <p>Select Source: 
+        <input type="radio" name="source" value="./FHT/" checked="checked">FHT<br/>
+        </p>
+      </div>
+      <div class="dropdown">
+        <p>Select Type: 
+        <select id="mimetype">
+            <option value="octet-stream.json" selected="selected" >application/octet-stream</option>
+            <option value="quicktime.json" >video/quicktime</option>
+            <option value="mpeg.json" >video/mpeg</option>
+            <option value="x-matlab.json" >text/x-matlab</option>
+            <option value="dif+xml.json" >application/dif+xml</option>
+            <option value="rdf+xml.json">application/rdf+xml</option>
+            <option value="vnd.google-earth.kmz.json">application/vnd.google-earth.kmz</option>
+            <option value="rtf.json">application/rtf</option>
+            <option value="pdf.json">application/pdf</option>
+            <option value="fits.json">application/fits</option>
+            <option value="x-sh.json">application/x-sh</option>
+            <option value="zip.json">application/zip</option>
+            <option value="x-7z-compressed.json">application/x-7z-compressed</option>
+            <option value="tiff.json">image/tiff</option>
+            <option value="rfc822.json">message/rfc822</option>
+        </select>
+        </p>
+      </div>
+    </div>
+      
+    <div class="correlation-heatmap">
+      
+      <!-- calibration and render type controller -->
+<!--
+      <div class="calibration" role="calibration">
+        <div class="group" role="example">
+          <svg></svg>       
+        </div>
+      </div>
+-->
+      <!-- heatmap -->
+      <svg role="heatmap" class="heatmap"></svg>
+    </div>
+    
+    <script type="text/javascript" src="app.js"></script>
+  </body>
+</html>

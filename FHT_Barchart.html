@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: orange;
+}
+
+.bar:hover {
+  fill: orangered ;
+}
+
+.x.axis path {
+  display: none;
+}
+:;
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+</style>
+<body>
+
+
+<p>Type:<br/>
+<input type="radio" name="FileType" value="FHT/atom+xml.csv">atom+xml<br/>
+<input type="radio" name="FileType" value="FHT/dif+xml.csv">dif+xml<br/>
+<input type="radio" name="FileType" value="FHT/epub+zip.csv">epub+zip<br/>
+<input type="radio" name="FileType" value="FHT/fits.csv">fits<br/>
+<input type="radio" name="FileType" value="FHT/gzip.csv">gzip<br/>
+<input type="radio" name="FileType" value="FHT/msword.csv">msword<br/>
+<input type="radio" name="FileType" value="FHT/octet-stream.csv">octet-stream<br/>
+<input type="radio" name="FileType" value="FHT/ogg.csv">ogg<br/>
+<input type="radio" name="FileType" value="FHT/pdf.csv">pdf<br/>
+<input type="radio" name="FileType" value="FHT/postscript.csv">postscript<br/>
+<input type="radio" name="FileType" value="FHT/rdf+xml.csv">rdf+xml<br/>
+<input type="radio" name="FileType" value="FHT/rss+xml.csv">rss+xml<br/>
+<input type="radio" name="FileType" value="FHT/rtf.csv">rtf<br/>
+<input type="radio" name="FileType" value="FHT/vnd.google-earth.kml+xml.csv">vnd.google-earth.kml+xml<br/>
+<input type="radio" name="FileType" value="FHT/vnd.ms-excel.csv">vnd.ms-excel<br/>
+<input type="radio" name="FileType" value="FHT/vnd.oasis.opendocument.text.csv">vnd.oasis.opendocument.text<br/>
+<input type="radio" name="FileType" value="FHT/vnd.rn-realmedia.csv">vnd.rn-realmedia<br/>
+<input type="radio" name="FileType" value="FHT/x-7z-compressed.csv">x-7z-compressed<br/>
+<input type="radio" name="FileType" value="FHT/x-bibtex-text-file.csv">x-bibtex-text-file<br/>
+<input type="radio" name="FileType" value="FHT/x-bittorrent.csv">x-bittorrent<br/>
+<input type="radio" name="FileType" value="FHT/x-bzip.csv">x-bzip<br/>
+<input type="radio" name="FileType" value="FHT/x-bzip2.csv">x-bzip2<br/>
+<input type="radio" name="FileType" value="FHT/x-compress.csv">x-compress<br/>
+<input type="radio" name="FileType" value="FHT/x-debian-package.csv">x-debian-package<br/>
+<input type="radio" name="FileType" value="FHT/x-elc.csv">x-elc<br/>
+<input type="radio" name="FileType" value="FHT/x-executable.csv">x-executable<br/>
+<input type="radio" name="FileType" value="FHT/x-font-ttf.csv">x-font-ttf<br/>
+<input type="radio" name="FileType" value="FHT/x-grib.csv">x-grib<br/>
+<input type="radio" name="FileType" value="FHT/x-gtar.csv">x-gtar<br/>
+<input type="radio" name="FileType" value="FHT/x-hdf.csv">x-hdf<br/>
+<input type="radio" name="FileType" value="FHT/xhtml+xml.csv">xhtml+xml<br/>
+<input type="radio" name="FileType" value="FHT/x-lha.csv">x-lha<br/>
+<input type="radio" name="FileType" value="FHT/x-matroska.csv">x-matroska<br/>
+<input type="radio" name="FileType" value="FHT/xml.csv">xml<br/>
+<input type="radio" name="FileType" value="FHT/x-msdownload.csv">x-msdownload<br/>
+<input type="radio" name="FileType" value="FHT/x-msmetafile.csv">x-msmetafile<br/>
+<input type="radio" name="FileType" value="FHT/x-rpm.csv">x-rpm<br/>
+<input type="radio" name="FileType" value="FHT/x-sh.csv">x-sh<br/>
+<input type="radio" name="FileType" value="FHT/x-shockwave-flash.csv">x-shockwave-flash<br/>
+<input type="radio" name="FileType" value="FHT/xslt+xml.csv">xslt+xml<br/>
+<input type="radio" name="FileType" value="FHT/x-tar.csv">x-tar<br/>
+<input type="radio" name="FileType" value="FHT/x-tex.csv">x-tex<br/>
+<input type="radio" name="FileType" value="FHT/x-tika-msoffice.csv">x-tika-msoffice<br/>
+<input type="radio" name="FileType" value="FHT/x-tika-ooxml.csv">x-tika-ooxml<br/>
+<input type="radio" name="FileType" value="FHT/x-xz.csv">x-xz<br/>
+<input type="radio" name="FileType" value="FHT/zip.csv">zip<br/>
+<input type="radio" name="FileType" value="FHT/zlib.csv">zlib
+</p>
+
+
+Byte: <select id="selectByte">
+  <option value="0">0</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+  <option value="11">11</option>
+  <option value="12">12</option>
+  <option value="13">13</option>
+  <option value="14">14</option>
+  <option value="15">15</option>
+</select>
+
+
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+
+var margin = {top: 40, right: 40, bottom: 30, left: 100},
+    width = 2000 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var formatPercent = d3.format(".0%");
+
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .tickFormat(formatPercent);
+
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+$("#selectByte").change(function() {
+  //alert("Byte " + $(this).val());
+  d3.select("svg").remove();
+  load_csv($("input[name=FileType]:radio").val(), $(this).val());
+})
+$("input[name=FileType]:radio").change(function() {
+  //alert("FileType: " + $(this).val());
+  d3.select("svg").remove();
+  load_csv($(this).val(), $("#selectByte").val());
+})
+
+
+function load_csv( file_name, byte_id )
+{
+  var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  var freq = 'byte_' + byte_id;
+  var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    return "<strong>Frequency:</strong> <span style='color:red'>" + d[freq] + "</span><br><strong>Letter:</strong> <span style='color:red'>" + d.letter + "</span>";
+  })
+
+  svg.call(tip);
+
+  d3.csv(file_name, type, function(error, data) {
+    x.domain(data.map(function(d) { return d.letter; }));
+    y.domain([0, d3.max(data, function(d) { return d[freq]; })]);
+
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+      .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .text("Frequency");
+    
+    svg.selectAll(".bar")
+        .data(data)
+      .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", function(d) { return x(d.letter); })
+        .attr("width", x.rangeBand())
+        .attr("y", function(d) { //console.log(d.letter); console.log(+d[freq]); return y(+d[freq]); })
+          if( +d[freq] <0.0001 ) {return y( 0.0001 ) }
+          else {return y(+d[freq]); } } )
+        .attr("height", function(d) { 
+          //return height - y(+d[freq]);})
+          if( +d[freq] <0.0001 ) { return height -y(0.0001) } 
+          else if( d[freq] < 0.1 ){ return height - y(0.05); } 
+          else {return height - y(+d[freq]);} })
+        .on('mouseover', tip.show)
+        .on('mouseout', tip.hide)
+
+  });
+}
+
+function type(d,byte_id) {
+  // d.frequency = +d[freq];
+  // console.log(d);
+  return d;
+}
+
+</script>
