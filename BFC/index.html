@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Correlation Matrix</title>    
+    <meta charset="utf-8"/>
+    <script type="text/javascript" src="http://d3js.org/d3.v3.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<!--
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>    
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+-->
+    <link rel="stylesheet" href="style.css"/>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Visualization for Correlation Matrix</h2>
+<!--
+      <p>Choose a type from the following fifteen to visualize correlation matrix.</p>
+-->
+      <div class="inputsource">
+        <p>Select Source: 
+        <input type="radio" name="source" value="./BFC_json_single_input/">Single Input Correlation
+        <input type="radio" name="source" value="./BFC_json_cross_correlation/" checked="checked">Cross Correlation<br/>
+        </p>
+      </div>
+      <div class="dropdown">
+        <p>Select Type: 
+        <select id="mimetype">
+            <option value="video/quicktime.json" selected="selected">video/quicktime</option>
+            <option value="video/mpeg.json">video/mpeg</option>
+            <option value="text/x-matlab.json">text/x-matlab</option>
+            <option value="application/dif+xml.json">application/dif+xml</option>
+            <option value="application/rdf+xml.json">application/rdf+xml</option>
+            <option value="application/pdf.json">application/pdf</option>
+            <option value="application/fits.json">application/fits</option>
+            <option value="application/x-7z-compressed.json">application/x-7z-compressed</option>
+            <option value="application/zip.json">application/zip</option>
+            <option value="application/octet-stream.json">application/octet-stream</option>
+            <option value="application/x-sh.json">application/x-sh</option>
+            <option value="application/rtf.json">application/rtf</option>
+            <option value="application/vnd.google-earth.kml+xml.json">application/vnd.google-earth.kml+xml</option>
+            <option value="image/tiff.json">application/tiff</option>
+            <option value="message/rfc822.json">application/message/rfc822</option>
+        </select>
+        </p>
+      </div>
+    </div>
+      
+    <div class="correlation-heatmap">
+      
+      <!-- calibration and render type controller -->
+<!--
+      <div class="calibration" role="calibration">
+        <div class="group" role="example">
+          <svg></svg>       
+        </div>
+      </div>
+-->
+      <!-- heatmap -->
+      <svg role="heatmap" class="heatmap"></svg>
+    </div>
+    
+    <script type="text/javascript" src="app.js"></script>
+  </body>
+</html>

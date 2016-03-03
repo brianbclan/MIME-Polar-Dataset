@@ -1,0 +1,14 @@
+body{font-family:arial, 'Hiragino Sans GB',Tahoma, Arial, Helvetica, STHeiti;font-size: 14px;}
+.correlation-heatmap{padding: 20px 0 20px 0;width: 500px;margin: 0 auto;}
+.correlation-heatmap .calibration{margin-bottom: 15px;width:400px;}
+.correlation-heatmap .calibration .group{display: inline-block;}
+.correlation-heatmap .calibration .description{width:108px;}
+.correlation-heatmap .calibration .description>label:last-child{float:right;}
+.correlation-heatmap .calibration>.display-control{float:right;}
+.correlation-heatmap .calibration>.display-control label{vertical-align: top;}
+.correlation-heatmap .calibration>.display-control input[type='radio']{cursor: pointer;}
+
+.correlation-heatmap .heatmap .axis path{display: none;}
+.correlation-heatmap .heatmap .axis line{fill: none;stroke: #000;shape-rendering: crispEdges;}
+.correlation-heatmap .heatmap .axis text{font-size: 12px}
+
