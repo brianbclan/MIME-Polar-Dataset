@@ -193,10 +193,10 @@ $("input[name=source]:radio").change(function(){
     //~ var renderByCount = document.getElementsByName('displayType')[0].checked;
 
     rect.transition()
-      .delay(function(d){
-        return d.byte1*15;
-      })
-      .duration(500)
+      //~ .delay(function(d){
+        //~ return d.byte1*15;
+      //~ })
+      //~ .duration(500)
       .attrTween('fill',function(d,i,a){
         //choose color dynamicly
         var colorIndex = d3.scale.quantize()
