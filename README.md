@@ -27,12 +27,12 @@ _This is a project of CSCI 599 at USC._
 * **BFC/BFC_json_single_input**: single file correaltion json data
 
 ## BFA
-* **BFA/75%/folder/index.html: main webpage to visualiza the byte frequency from BFA of 75% data
-* **BFA/75%/folder/file.json: json file for each type's d3 visualization's webpage of 75% data
-* **BFA/25%/folder/index.html: main webpage to visualiza the byte frequency from BFA of 25% data
-* **BFA/25%/folder/file.json: json file for each type's d3 visualization's webpage of 25% data
+* **BFA/75%/folder/index.html**: main webpage to visualiza the byte frequency from BFA of 75% data
+* **BFA/75%/folder/file.json**: json file for each type's d3 visualization's webpage of 75% data
+* **BFA/25%/folder/index.html**: main webpage to visualiza the byte frequency from BFA of 25% data
+* **BFA/25%/folder/file.json**: json file for each type's d3 visualization's webpage of 25% data
 
 ## Pie Chart
-* **Pie Chart/index.html: d3 visualization for overall MIME type
-* **Pie Chart/mimetype.txt: original overall MIME type json file
-* **Pie Chart/mimetypeC.txt: convert to the format that fit the input of pie chart
+* **Pie Chart/index.html**: d3 visualization for overall MIME type
+* **Pie Chart/mimetype.txt**: original overall MIME type json file
+* **Pie Chart/mimetypeC.txt**: convert to the format that fit the input of pie chart
