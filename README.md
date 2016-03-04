@@ -17,6 +17,7 @@ _This is a project of CSCI 599 at USC._
 * **stringConverter.py**: used to generate json file for overall MIME type D3 visualization
 * **bfa.java**: used to calculate byte frquency for each file type
 * **DetectType.java**: detect file types by tika
+* **classifytiff.py**: using scikit learn decision tree classifer to classify tiff file format and output accuracy
 
 ## FHT Directory
 * **FHT/index.html**: main webpage to visualize result of FHT in matrix chart
