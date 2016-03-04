@@ -18,6 +18,9 @@ _This is a project of CSCI 599 at USC._
 * **bfa.java**: used to calculate byte frquency for each file type
 * **DetectType.java**: detect file types by tika
 * **classifytiff.py**: using scikit learn decision tree classifer to classify tiff file format and output accuracy
+* **BFASnippet.pdf**: demonstrate the snippet of BFA D3 visualization
+* **BFCSnippet.pdf**: demonstrate the snippet of BFC D3 visualization
+* **FHTSnippet.pdf**: demonstrate the snippet of FHT D3 visualization
 
 ## FHT Directory
 * **FHT/index.html**: main webpage to visualize result of FHT in matrix chart
