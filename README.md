@@ -22,10 +22,12 @@ _This is a project of CSCI 599 at USC._
 ## FHT Directory
 * **FHT/index.html**: main webpage to visualize result of FHT in matrix chart
 * **FHT/FHT_Barchart.html**: webpage to visualize result of FHT in bar chart
+* **FHT/app.js**: d3 javascript snippet for generating the heat map representation for FHT matrix
+* **FHT/FHT**: contains all json and csv files for d3 visualization
 
 ## BFC Directory
 * **BFC/index.html**: main webpage to visualize the correlation matrix obtained from BFC
-* **BFC/app.java**: d3 javascript snippet for generating the heat map representation
+* **BFC/app.js**: d3 javascript snippet for generating the heat map representation
 * **BFC/randomMatrixGenerator.py**: test file that generates sample json file for correlation matrix
 * **BFC/BFC_json_cross_correlation**: cross correlation json data
 * **BFC/BFC_json_single_input**: single file correaltion json data
