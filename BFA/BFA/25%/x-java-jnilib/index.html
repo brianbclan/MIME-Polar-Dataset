@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+svg {
+  font: 10px sans-serif;
+}
+
+path.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+path.area {
+  fill: #e7e7e7;
+}
+
+.axis {
+  shape-rendering: crispEdges;
+}
+
+.x.axis line {
+  stroke: #fff;
+}
+
+.x.axis .minor {
+  stroke-opacity: .5;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.y.axis line,
+.y.axis path {
+  fill: none;
+  stroke: #000;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+.focus circle {
+  fill: none;
+  stroke: steelblue;
+}
+
+</style>
+<script src="http://www.d3plus.org/js/d3.js"></script>
+<script src="http://www.d3plus.org/js/d3plus.js"></script>
+<body>
+<script>
+
+var margin = {top: 40, right: 140, bottom: 40, left: 60},
+    width = 960 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom;
+
+//~ var parse = d3.time.format("%b %Y").parse;
+var bisectByte = d3.bisector(function(d) { return d.byte; }).left;
+
+var x = d3.scale.linear()
+    .range([0, width]);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
+    .tickSize(-height);
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(10);
+
+var area = d3.svg.area()
+    .interpolate("monotone")
+    .x(function(d) { return x(d.byte); })
+    .y0(height)
+    .y1(function(d) { return y(d.frequency); });
+
+var line = d3.svg.line()
+    .interpolate("monotone")
+    .x(function(d) { return x(d.byte); })
+    .y(function(d) { return y(d.frequency); });
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+//~ 
+//~ svg.append("clipPath")
+    //~ .attr("id", "clip")
+  //~ .append("rect")
+    //~ .attr("width", width)
+    //~ .attr("height", height);
+
+d3.json("jnilib.json", function(error, dataOriginal) {
+  if (error) throw error;
+  var data = dataOriginal.jnilib;
+  console.log(data);
+  
+  // Compute the minimum and maximum date, and the maximum price.
+  x.domain([data[0].byte, data[data.length - 1].byte]);
+  y.domain([0, 1]);
+  //~ y.domain([0, d3.max(data, function(d) { return d.frequency; })]).nice();
+
+  //~ svg
+      //~ .datum(data)
+      //~ .on("click", click);
+
+  svg.append("path")
+      .datum(data)
+      .attr("class", "area")
+      .attr("clip-path", "url(#clip)")
+      .attr("d", area);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+      .append("text")
+      .attr("x", 740)
+      //~ .attr("dx", "-20.0em")
+      .attr("dy", "2.6em")
+      .style("text-anchor", "start")
+      .text("Byte");
+
+  svg.append("g")
+      .attr("class", "y axis")
+      //~ .attr("transform", "translate(" + width + ",0)")
+      .call(yAxis)
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "-5.3em")
+      .style("text-anchor", "end")
+      .text("Frequency");
+
+  svg.append("path")
+      .datum(data)
+      .attr("class", "line")
+      .attr("d", line)
+      .attr("clip-path", "url(#clip)")
+
+  var focus = svg.append("g")
+      .attr("class", "focus")
+      .style("display", "none");
+
+  focus.append("circle")
+      .attr("r", 4.5);
+
+  focus.append("text")
+      .attr("x", 9)
+      .attr("dy", "-3.35em");
+      
+  svg.append("rect")
+      .attr("class", "overlay")
+      .attr("width", width)
+      .attr("height", height)
+      .on("mouseover", function() { focus.style("display", null); })
+      .on("mouseout", function() { focus.style("display", "none"); })
+      .on("mousemove", mousemove);
+
+  function mousemove() {
+    var byte0 = x.invert(d3.mouse(this)[0]), // this is to invert the mouse x position to the x position of data.byte
+        i = bisectByte(data, byte0, 1),
+        d0 = data[i - 1],
+        d1 = data[i],
+        d = byte0 - d0.byte > d1.byte - byte0 ? d1 : d0;
+    focus.attr("transform", "translate(" + x(d.byte) + "," + y(d.frequency) + ")");
+    focus.select("text").text("(byte: " + d.byte + ", freq: " + d.frequency + ")");
+  }
+  
+  //~ svg.append("text")
+      //~ .attr("x", width - 6)
+      //~ .attr("y", height - 6)
+      //~ .style("text-anchor", "end")
+      //~ .text(data[0].symbol);
+
+  // On click, update the x-axis.
+  //~ function click() {
+    //~ var n = data.length - 1,
+        //~ i = Math.floor(Math.random() * n / 2),
+        //~ j = i + Math.floor(Math.random() * n / 2) + 1;
+    //~ x.domain([data[i].date, data[j].date]);
+    //~ var t = svg.transition().duration(750);
+    //~ t.select(".x.axis").call(xAxis);
+    //~ t.select(".area").attr("d", area);
+    //~ t.select(".line").attr("d", line);
+  //~ }
+});
+
+</script>
